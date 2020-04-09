@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 20.625" name="CeDict">
+  <DataContextMoniker Name="/CeDictDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c24097a9-207b-4b01-b274-75e5788ace08" absoluteBounds="7.25, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/CeDictDataContext/CeDict" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c6b41f73-0d03-4004-8bd3-b1214ce1eb85" absoluteBounds="7.265, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="954ac979-7d75-4479-b241-0762350ff97e" absoluteBounds="4.375, 0.875, 2, 19.462628580729163">
+      <DataClassMoniker Name="/CeDictDataContext/UniHan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e6a1cebb-cfe8-4212-8ca1-9213a07376a9" absoluteBounds="4.39, 1.335, 1.9700000000000002, 18.902628580729164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

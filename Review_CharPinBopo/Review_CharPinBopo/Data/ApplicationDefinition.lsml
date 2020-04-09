@@ -1,0 +1,1906 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ModelFragment xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Application Name="LightSwitchApplication"
+               Version="1.0.0.0"
+               DefaultNavigationItem="!module/NavigationItems[Tasks]"
+               Shell=":Standard"
+               Theme=":Blue">
+    <Application.Methods>
+      <ApplicationMethod Name="ShowCharToBopo">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod TargetScreen="CharToBopo" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+      <ApplicationMethod Name="ShowPinToBopo">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod TargetScreen="PinToBopo" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+      <ApplicationMethod Name="ShowPinToMypins">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod TargetScreen="PinToMypins" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+      <ApplicationMethod Name="ShowBopoToPin">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod TargetScreen="BopoToPin" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+      <ApplicationMethod Name="ShowBopoToChar">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod TargetScreen="BopoToChar" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+    </Application.Methods>
+    <Application.Attributes>
+      <AutomaticDisplayName Expression="(\p{Ll})(\p{Lu})|_+"
+                            Replacement="$1 $2" />
+    </Application.Attributes>
+    <Application.NavigationItems>
+      <ApplicationNavigationGroup Name="Tasks"
+                                  DefaultItem="!module/NavigationItems[Tasks]/Children[CharToBopo]">
+        <ApplicationNavigationGroup.Attributes>
+          <DisplayName Value="Tasks" />
+        </ApplicationNavigationGroup.Attributes>
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowCharToBopo]"
+                                   Name="CharToBopo" />
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowPinToBopo]"
+                                   Name="PinToBopo" />
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowPinToMypins]"
+                                   Name="PinToMypins" />
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowBopoToPin]"
+                                   Name="BopoToPin" />
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowBopoToChar]"
+                                   Name="BopoToChar" />
+      </ApplicationNavigationGroup>
+      <ApplicationNavigationGroup Name="Administration">
+        <ApplicationNavigationGroup.Attributes>
+          <DisplayName Value="Administration" />
+        </ApplicationNavigationGroup.Attributes>
+        <ApplicationNavigationLink Command="Microsoft.LightSwitch.Security:!module/Commands[ScreenCommandShowRolesScreen]"
+                                   Name="RolesScreen" />
+        <ApplicationNavigationLink Command="Microsoft.LightSwitch.Security:!module/Commands[ScreenCommandShowUsersScreen]"
+                                   Name="UsersScreen" />
+      </ApplicationNavigationGroup>
+    </Application.NavigationItems>
+    <ApplicationCommand Name="ScreenCommandShowCharToBopo"
+                        Target="!module/Methods[ShowCharToBopo]" />
+    <ApplicationCommand Name="ScreenCommandShowPinToBopo"
+                        Target="!module/Methods[ShowPinToBopo]" />
+    <ApplicationCommand Name="ScreenCommandShowPinToMypins"
+                        Target="!module/Methods[ShowPinToMypins]" />
+    <ApplicationCommand Name="ScreenCommandShowBopoToPin"
+                        Target="!module/Methods[ShowBopoToPin]" />
+    <ApplicationCommand Name="ScreenCommandShowBopoToChar"
+                        Target="!module/Methods[ShowBopoToChar]" />
+  </Application>
+
+  <EntityContainerGroup Name="DataWorkspace">
+    <EntityContainerGroupProperty EntityContainer="Microsoft.LightSwitch.Security:SecurityData"
+                             Name="SecurityData">
+      <EntityContainerGroupProperty.Attributes>
+        <Generated />
+        <DisplayName Value="Security Data" />
+        <Description Value="Service that provides access to security-related data." />
+      </EntityContainerGroupProperty.Attributes>
+    </EntityContainerGroupProperty>
+    <EntityContainerGroupProperty EntityContainer="ChineseStudyData"
+                                  Name="ChineseStudyData" />
+  </EntityContainerGroup>
+  <EntityType Name="CharBopo">
+    <EntityType.Methods>
+      <EntityMethod Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <EntityProperty Name="ID"
+                      PropertyType=":Double">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty Name="c_Char"
+                      PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty Name="Bopo"
+                      PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty Name="Cji"
+                      PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty IsReadOnly="True"
+                   Name="SSMA_RowID"
+                   PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty IsReadOnly="True"
+                      Name="SSMA_TimeStamp"
+                      PropertyType=":Binary">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength IsFixedLength="True"
+                     Value="8" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+
+  <EntityType Name="PinBopo">
+    <EntityType.Methods>
+      <EntityMethod Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <EntityProperty Name="ID"
+                      PropertyType=":Double">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty Name="Pin"
+                      PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty Name="Bopo"
+                      PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty IsReadOnly="True"
+                   Name="SSMA_RowID"
+                   PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty IsReadOnly="True"
+                      Name="SSMA_TimeStamp"
+                      PropertyType=":Binary">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength IsFixedLength="True"
+                     Value="8" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+
+  <EntityType Name="PinMypin">
+    <EntityType.Methods>
+      <EntityMethod Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <EntityProperty Name="ID"
+                      PropertyType=":Double">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty Name="Pin"
+                      PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty Name="MyPin"
+                      PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <KeyProperty IsReadOnly="True"
+                   Name="SSMA_RowID"
+                   PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty IsReadOnly="True"
+                      Name="SSMA_TimeStamp"
+                      PropertyType=":Binary">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength IsFixedLength="True"
+                     Value="8" />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+<EntityContainer Name="ChineseStudyData"
+                   IsIntrinsic="False">
+
+    <EntitySet CanDelete="True"
+               CanInsert="True"
+               CanUpdate="True"
+               EntityType="CharBopo"
+               Name="CharBopoes" />
+  
+    <EntitySet CanDelete="True"
+               CanInsert="True"
+               CanUpdate="True"
+               EntityType="PinBopo"
+               Name="PinBopoes" />
+  
+    <EntitySet CanDelete="True"
+               CanInsert="True"
+               CanUpdate="True"
+               EntityType="PinMypin"
+               Name="PinMypins" />
+  
+    <SubmitOperation Name="SaveChanges" />
+  
+    <QueryOperation Name="CharBopoes_Single"
+                    ReturnType="CharBopo">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="SSMA_RowID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="SSMA_RowID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="CharBopoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="SSMA_RowID"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'SSMA_RowID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="CharBopoes_SingleOrDefault"
+                    ReturnType="CharBopo">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="SSMA_RowID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="SSMA_RowID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="CharBopoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="SSMA_RowID"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'SSMA_RowID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="CharBopoes_All"
+                    ReturnType="CharBopo*">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns all entities contained in the entity set." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="CharBopoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+  
+    <QueryOperation Name="PinBopoes_Single"
+                    ReturnType="PinBopo">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="SSMA_RowID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="SSMA_RowID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PinBopoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="SSMA_RowID"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'SSMA_RowID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="PinBopoes_SingleOrDefault"
+                    ReturnType="PinBopo">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="SSMA_RowID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="SSMA_RowID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PinBopoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="SSMA_RowID"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'SSMA_RowID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="PinBopoes_All"
+                    ReturnType="PinBopo*">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns all entities contained in the entity set." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PinBopoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+  
+    <QueryOperation Name="PinMypins_Single"
+                    ReturnType="PinMypin">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="SSMA_RowID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="SSMA_RowID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PinMypins" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="SSMA_RowID"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'SSMA_RowID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="PinMypins_SingleOrDefault"
+                    ReturnType="PinMypin">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="SSMA_RowID" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="SSMA_RowID" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PinMypins" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="SSMA_RowID"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'SSMA_RowID' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="PinMypins_All"
+                    ReturnType="PinMypin*">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns all entities contained in the entity set." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PinMypins" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+  
+    <QueryOperation Name="Char_Bopo"
+                    ReturnType="CharBopo*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="c_Char" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression  Parameter="c_Char" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="CharBopoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="c_Char"
+                               ParameterType=":String?" />
+    </QueryOperation>
+  
+    <QueryOperation Name="Pin_Bopo"
+                    ReturnType="PinBopo*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Pin" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression  Parameter="Pin" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PinBopoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="Pin"
+                               ParameterType=":String?" />
+    </QueryOperation>
+  
+    <QueryOperation Name="Pin_Mypins"
+                    ReturnType="PinMypin*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Pin" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression  Parameter="Pin" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PinMypins" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="Pin"
+                               ParameterType=":String?" />
+    </QueryOperation>
+  
+    <QueryOperation Name="Bopo_Pin"
+                    ReturnType="PinBopo*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Bopo" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression  Parameter="Bopo" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PinBopoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="Bopo"
+                               ParameterType=":String?" />
+    </QueryOperation>
+    <QueryOperation Name="Bopo_Chars"
+                    ReturnType="CharBopo*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Bopo" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression  Parameter="Bopo" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="CharBopoes" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="Bopo"
+                               ParameterType=":String?" />
+    </QueryOperation>
+  
+  </EntityContainer>
+
+  
+  <DataService DataProvider="EntityFrameworkDataProvider"
+               EntityContainer="ChineseStudyData"
+               Name="ChineseStudyDataDataService">
+    <DataService.ConnectionProperties>
+      <ConnectionProperty Name="DataProviderName"
+                          Value="91510608-8809-4020-8897-fba057e22d54" />
+      <ConnectionProperty Name="DataSourceName"
+                          Value="067ea0d9-ba62-43f7-9106-34930c60c528" />
+      <ConnectionProperty Name="ProviderInvariantName"
+                          Value="System.Data.SqlClient" />
+      <ConnectionProperty Name="ConnectionStringGuid"
+                          Value="096c155a-ad38-4cae-917d-bf09848cf0b7" />
+      <ConnectionProperty Name="ProviderManifestToken"
+                          Value="2008" />
+    </DataService.ConnectionProperties>
+    <EntitySetMapping EntitySet="CharBopoes">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet Schema="dbo"
+                       Table="CharBopo" />
+        <SsdlProperty Name="ID"
+                      Nullable="False"
+                      Property="CharBopo/Properties[ID]"
+                      Type="float" />
+        <SsdlProperty Name="Char"
+                      Nullable="False"
+                      Property="CharBopo/Properties[c_Char]"
+                      Type="nvarchar(max)" />
+        <SsdlProperty Name="Bopo"
+                      Nullable="True"
+                      Property="CharBopo/Properties[Bopo]"
+                      Type="nvarchar(max)" />
+        <SsdlProperty Name="Cji"
+                      Nullable="False"
+                      Property="CharBopo/Properties[Cji]"
+                      Type="nvarchar(max)" />
+        <SsdlProperty Name="SSMA_RowID"
+                      Nullable="False"
+                      Property="CharBopo/Properties[SSMA_RowID]"
+                      StoreGeneratedPattern="Identity"
+                      Type="int" />
+        <SsdlProperty Name="SSMA_TimeStamp"
+                      Nullable="False"
+                      Property="CharBopo/Properties[SSMA_TimeStamp]"
+                      StoreGeneratedPattern="Computed"
+                      Type="timestamp" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <EntitySetMapping EntitySet="PinBopoes">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet Schema="dbo"
+                       Table="PinBopo" />
+        <SsdlProperty Name="ID"
+                      Nullable="False"
+                      Property="PinBopo/Properties[ID]"
+                      Type="float" />
+        <SsdlProperty Name="Pin"
+                      Nullable="False"
+                      Property="PinBopo/Properties[Pin]"
+                      Type="nvarchar(max)" />
+        <SsdlProperty Name="Bopo"
+                      Nullable="False"
+                      Property="PinBopo/Properties[Bopo]"
+                      Type="nvarchar(max)" />
+        <SsdlProperty Name="SSMA_RowID"
+                      Nullable="False"
+                      Property="PinBopo/Properties[SSMA_RowID]"
+                      StoreGeneratedPattern="Identity"
+                      Type="int" />
+        <SsdlProperty Name="SSMA_TimeStamp"
+                      Nullable="False"
+                      Property="PinBopo/Properties[SSMA_TimeStamp]"
+                      StoreGeneratedPattern="Computed"
+                      Type="timestamp" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <EntitySetMapping EntitySet="PinMypins">
+      <EntitySetMapping.Attributes>
+        <SsdlEntitySet Schema="dbo"
+                       Table="PinMypin" />
+        <SsdlProperty Name="ID"
+                      Nullable="False"
+                      Property="PinMypin/Properties[ID]"
+                      Type="float" />
+        <SsdlProperty Name="Pin"
+                      Nullable="True"
+                      Property="PinMypin/Properties[Pin]"
+                      Type="nvarchar(max)" />
+        <SsdlProperty Name="MyPin"
+                      Nullable="True"
+                      Property="PinMypin/Properties[MyPin]"
+                      Type="nvarchar(max)" />
+        <SsdlProperty Name="SSMA_RowID"
+                      Nullable="False"
+                      Property="PinMypin/Properties[SSMA_RowID]"
+                      StoreGeneratedPattern="Identity"
+                      Type="int" />
+        <SsdlProperty Name="SSMA_TimeStamp"
+                      Nullable="False"
+                      Property="PinMypin/Properties[SSMA_TimeStamp]"
+                      StoreGeneratedPattern="Computed"
+                      Type="timestamp" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+  </DataService>
+
+  <Screen Name="CharToBopo">
+    <Screen.Attributes>
+      <SaveChangesTo DataService="ChineseStudyDataDataService" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty Name="Char_Bopo"
+                                PageSize="45"
+                                PropertyType="CollectionView$CharBopo">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="Char_BopoQuery"
+                                 ReturnType="CharBopo*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ChineseStudyData/Members[Char_Bopo]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="CharToBopo/Properties[Char_Bopo]/Query">
+              <ArgumentExpression Parameter="c_Char">
+                <ChainExpression>
+                  <MemberExpression Member="CharToBopo/Properties[CharBopoc_Char]" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenProperty Name="CharBopoc_Char"
+                      PropertyType=":String" />
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem Kind="Screen"
+                   Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem Kind="Command"
+                       Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="CharToBopo/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Command"
+                       Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="CharToBopo/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem Kind="Group"
+                     Name="ScreenLayout">
+          <ContentItem DataType=":String"
+                       Kind="Value"
+                       Name="CharBopoc_Char">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression Member="CharToBopo/Properties[CharBopoc_Char]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem DataType="CollectionView$CharBopo"
+                       Kind="Collection"
+                       Name="grid">
+            <ContentItem.CommandItems>
+              <ContentItem Kind="Command"
+                           Name="Char_Bopo_AddAndEditNew">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharToBopo/Properties[Char_Bopo]" />
+                      <CallExpression Target="AddAndEditNew" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem Kind="Command"
+                           Name="Char_Bopo_EditSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharToBopo/Properties[Char_Bopo]" />
+                      <CallExpression Target="EditSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem Kind="Command"
+                           Name="Char_Bopo_DeleteSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharToBopo/Properties[Char_Bopo]" />
+                      <CallExpression Target="DeleteSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem.CommandItems>
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression Member="CharToBopo/Properties[Char_Bopo]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Stretch" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Collapsed" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="CharBopo"
+                         Kind="Details"
+                         Name="RowTemplate">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression />
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem DataType=":Double"
+                           Kind="Value"
+                           Name="ID">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[ID]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="c_Char">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[c_Char]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String?"
+                           Kind="Value"
+                           Name="Bopo">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[Bopo]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Cji">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[Cji]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Int32"
+                           Kind="Value"
+                           Name="SSMA_RowID">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[SSMA_RowID]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Binary"
+                           Kind="Value"
+                           Name="SSMA_TimeStamp">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[SSMA_TimeStamp]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+
+  <Screen Name="PinToBopo">
+    <Screen.Attributes>
+      <SaveChangesTo DataService="ChineseStudyDataDataService" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty Name="Pin_Bopo"
+                                PageSize="45"
+                                PropertyType="CollectionView$PinBopo">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="Pin_BopoQuery"
+                                 ReturnType="PinBopo*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ChineseStudyData/Members[Pin_Bopo]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="PinToBopo/Properties[Pin_Bopo]/Query">
+              <ArgumentExpression Parameter="Pin">
+                <ChainExpression>
+                  <MemberExpression Member="PinToBopo/Properties[PinBopoPin]" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenProperty Name="PinBopoPin"
+                      PropertyType=":String" />
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem Kind="Screen"
+                   Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem Kind="Command"
+                       Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="PinToBopo/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Command"
+                       Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="PinToBopo/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem Kind="Group"
+                     Name="ScreenLayout">
+          <ContentItem DataType=":String"
+                       Kind="Value"
+                       Name="PinBopoPin">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression Member="PinToBopo/Properties[PinBopoPin]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem DataType="CollectionView$PinBopo"
+                       Kind="Collection"
+                       Name="grid">
+            <ContentItem.CommandItems>
+              <ContentItem Kind="Command"
+                           Name="Pin_Bopo_AddAndEditNew">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinToBopo/Properties[Pin_Bopo]" />
+                      <CallExpression Target="AddAndEditNew" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem Kind="Command"
+                           Name="Pin_Bopo_EditSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinToBopo/Properties[Pin_Bopo]" />
+                      <CallExpression Target="EditSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem Kind="Command"
+                           Name="Pin_Bopo_DeleteSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinToBopo/Properties[Pin_Bopo]" />
+                      <CallExpression Target="DeleteSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem.CommandItems>
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression Member="PinToBopo/Properties[Pin_Bopo]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Stretch" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Collapsed" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="PinBopo"
+                         Kind="Details"
+                         Name="RowTemplate">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression />
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem DataType=":Double"
+                           Kind="Value"
+                           Name="ID">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinBopo/Properties[ID]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Pin">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinBopo/Properties[Pin]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Bopo">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinBopo/Properties[Bopo]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Int32"
+                           Kind="Value"
+                           Name="SSMA_RowID">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinBopo/Properties[SSMA_RowID]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Binary"
+                           Kind="Value"
+                           Name="SSMA_TimeStamp">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinBopo/Properties[SSMA_TimeStamp]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+
+  <Screen Name="PinToMypins">
+    <Screen.Attributes>
+      <SaveChangesTo DataService="ChineseStudyDataDataService" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty Name="Pin_Mypins"
+                                PageSize="45"
+                                PropertyType="CollectionView$PinMypin">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="Pin_MypinsQuery"
+                                 ReturnType="PinMypin*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ChineseStudyData/Members[Pin_Mypins]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="PinToMypins/Properties[Pin_Mypins]/Query">
+              <ArgumentExpression Parameter="Pin">
+                <ChainExpression>
+                  <MemberExpression Member="PinToMypins/Properties[PinMypinPin]" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenProperty Name="PinMypinPin"
+                      PropertyType=":String" />
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem Kind="Screen"
+                   Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem Kind="Command"
+                       Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="PinToMypins/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Command"
+                       Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="PinToMypins/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem Kind="Group"
+                     Name="ScreenLayout">
+          <ContentItem DataType=":String"
+                       Kind="Value"
+                       Name="PinMypinPin">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression Member="PinToMypins/Properties[PinMypinPin]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem DataType="CollectionView$PinMypin"
+                       Kind="Collection"
+                       Name="grid">
+            <ContentItem.CommandItems>
+              <ContentItem Kind="Command"
+                           Name="Pin_Mypins_AddAndEditNew">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinToMypins/Properties[Pin_Mypins]" />
+                      <CallExpression Target="AddAndEditNew" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem Kind="Command"
+                           Name="Pin_Mypins_EditSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinToMypins/Properties[Pin_Mypins]" />
+                      <CallExpression Target="EditSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem Kind="Command"
+                           Name="Pin_Mypins_DeleteSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinToMypins/Properties[Pin_Mypins]" />
+                      <CallExpression Target="DeleteSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem.CommandItems>
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression Member="PinToMypins/Properties[Pin_Mypins]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Stretch" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Collapsed" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="PinMypin"
+                         Kind="Details"
+                         Name="RowTemplate">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression />
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem DataType=":Double"
+                           Kind="Value"
+                           Name="ID">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinMypin/Properties[ID]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String?"
+                           Kind="Value"
+                           Name="Pin">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinMypin/Properties[Pin]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String?"
+                           Kind="Value"
+                           Name="MyPin">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinMypin/Properties[MyPin]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Int32"
+                           Kind="Value"
+                           Name="SSMA_RowID">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinMypin/Properties[SSMA_RowID]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Binary"
+                           Kind="Value"
+                           Name="SSMA_TimeStamp">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinMypin/Properties[SSMA_TimeStamp]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+
+  <Screen Name="BopoToPin">
+    <Screen.Attributes>
+      <SaveChangesTo DataService="ChineseStudyDataDataService" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty Name="Bopo_Pin"
+                                PageSize="45"
+                                PropertyType="CollectionView$PinBopo">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="Bopo_PinQuery"
+                                 ReturnType="PinBopo*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ChineseStudyData/Members[Bopo_Pin]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="BopoToPin/Properties[Bopo_Pin]/Query">
+              <ArgumentExpression Parameter="Bopo">
+                <ChainExpression>
+                  <MemberExpression Member="BopoToPin/Properties[PinBopoBopo]" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenProperty Name="PinBopoBopo"
+                      PropertyType=":String" />
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem Kind="Screen"
+                   Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem Kind="Command"
+                       Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="BopoToPin/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Command"
+                       Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="BopoToPin/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem Kind="Group"
+                     Name="ScreenLayout">
+          <ContentItem DataType=":String"
+                       Kind="Value"
+                       Name="PinBopoBopo">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression Member="BopoToPin/Properties[PinBopoBopo]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem DataType="CollectionView$PinBopo"
+                       Kind="Collection"
+                       Name="grid">
+            <ContentItem.CommandItems>
+              <ContentItem Kind="Command"
+                           Name="Bopo_Pin_AddAndEditNew">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="BopoToPin/Properties[Bopo_Pin]" />
+                      <CallExpression Target="AddAndEditNew" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem Kind="Command"
+                           Name="Bopo_Pin_EditSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="BopoToPin/Properties[Bopo_Pin]" />
+                      <CallExpression Target="EditSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem Kind="Command"
+                           Name="Bopo_Pin_DeleteSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="BopoToPin/Properties[Bopo_Pin]" />
+                      <CallExpression Target="DeleteSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem.CommandItems>
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression Member="BopoToPin/Properties[Bopo_Pin]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Stretch" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Collapsed" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="PinBopo"
+                         Kind="Details"
+                         Name="RowTemplate">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression />
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem DataType=":Double"
+                           Kind="Value"
+                           Name="ID">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinBopo/Properties[ID]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Pin">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinBopo/Properties[Pin]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Bopo">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinBopo/Properties[Bopo]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Int32"
+                           Kind="Value"
+                           Name="SSMA_RowID">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinBopo/Properties[SSMA_RowID]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Binary"
+                           Kind="Value"
+                           Name="SSMA_TimeStamp">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="PinBopo/Properties[SSMA_TimeStamp]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+  <Screen Name="BopoToChar">
+    <Screen.Attributes>
+      <SaveChangesTo DataService="ChineseStudyDataDataService" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty Name="Bopo_Chars"
+                                PageSize="45"
+                                PropertyType="CollectionView$CharBopo">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="Bopo_CharsQuery"
+                                 ReturnType="CharBopo*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ChineseStudyData/Members[Bopo_Chars]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="BopoToChar/Properties[Bopo_Chars]/Query">
+              <ArgumentExpression Parameter="Bopo">
+                <ChainExpression>
+                  <MemberExpression Member="BopoToChar/Properties[CharBopoBopo]" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenProperty Name="CharBopoBopo"
+                      PropertyType=":String" />
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem Kind="Screen"
+                   Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem Kind="Command"
+                       Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="BopoToChar/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Command"
+                       Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="BopoToChar/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem Kind="Group"
+                     Name="ScreenLayout">
+          <ContentItem DataType=":String"
+                       Kind="Value"
+                       Name="CharBopoBopo">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression Member="BopoToChar/Properties[CharBopoBopo]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem DataType="CollectionView$CharBopo"
+                       Kind="Collection"
+                       Name="grid">
+            <ContentItem.CommandItems>
+              <ContentItem Kind="Command"
+                           Name="Bopo_Chars_AddAndEditNew">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="BopoToChar/Properties[Bopo_Chars]" />
+                      <CallExpression Target="AddAndEditNew" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem Kind="Command"
+                           Name="Bopo_Chars_EditSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="BopoToChar/Properties[Bopo_Chars]" />
+                      <CallExpression Target="EditSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem Kind="Command"
+                           Name="Bopo_Chars_DeleteSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="BopoToChar/Properties[Bopo_Chars]" />
+                      <CallExpression Target="DeleteSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem.CommandItems>
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression Member="BopoToChar/Properties[Bopo_Chars]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Stretch" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Collapsed" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="CharBopo"
+                         Kind="Details"
+                         Name="RowTemplate">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression />
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem DataType=":Double"
+                           Kind="Value"
+                           Name="ID">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[ID]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="c_Char">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[c_Char]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String?"
+                           Kind="Value"
+                           Name="Bopo">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[Bopo]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Cji">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[Cji]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Int32"
+                           Kind="Value"
+                           Name="SSMA_RowID">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[SSMA_RowID]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Binary"
+                           Kind="Value"
+                           Name="SSMA_TimeStamp">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="CharBopo/Properties[SSMA_TimeStamp]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+
+
+</ModelFragment>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.25, 20" name="CeDict">
+  <DataContextMoniker Name="/CeDictDataContext" />
+  <nestedChildShapes>
+    <classShape Id="e26b25bb-bbf1-4dc5-9269-929e489fb4c2" absoluteBounds="9.875, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/CeDictDataContext/CeDictFull" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b8cf9eb6-8dde-454d-ade3-70b210fed891" absoluteBounds="9.89, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4daad971-fb52-48a7-8bb3-a62f47d1720e" absoluteBounds="7.125, 0.625, 2, 19.078025716145831">
+      <DataClassMoniker Name="/CeDictDataContext/UniHan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="15afeb68-0af0-4d04-9087-b855463290e3" absoluteBounds="7.14, 1.085, 1.9700000000000002, 18.518025716145832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0faf8dba-babb-434c-adab-f833b1a9594c" absoluteBounds="10, 2.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/CeDictDataContext/CeDict" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7f165460-fb56-4c45-b691-93cd0020a9ed" absoluteBounds="10.015, 3.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -355,9 +355,10 @@ namespace Chinese_Vocabulary_Lists
 				var chinChars = WorkTraditional.Text.ToCharArray();
 				var uniHex = ExpandUnihex(chinChars);
 
-				using (var ceDictionary = new CeDictDataContext(Properties.Settings.Default.ChineseStudyConnection))
+				//using (var ceDictionary = new DataSet1(Properties.Settings.Default.ChineseStudyConnection))
+                using (var ceDictionary = new DataSet1())
 				{
-					var definitions = from ed in ceDictionary.CeDicts
+					var definitions = from ed in ceDictionary.CeDict
 										where ed.Char == WorkTraditional.Text
 										where ed.Bopo == foundBo[0]
 										select ed;
@@ -379,18 +380,18 @@ namespace Chinese_Vocabulary_Lists
 
 				WorkTraditional.Text = "";
 
-				using (var uniHan = new CeDictDataContext(Properties.Settings.Default.ChineseStudyConnection))
+				using (var uniHan = new DataSet1())
 				{
-					var characters = from q in uniHan.UniHans
-										where q.cp == uniHex
-										select q;
+					var characters = from q in uniHan.UniHan
+									 where q.cp == uniHex
+									 select q;
 
 					try
 					{
 						foreach (var character in characters)
 						{
 							textCangjie.Text = character.kCangjie;
-                            WriteCji.Text = WriteCji.Text + textCangjie.Text + @" ";
+							WriteCji.Text = WriteCji.Text + textCangjie.Text + @" ";
 							break;
 						}
 					}
@@ -400,7 +401,7 @@ namespace Chinese_Vocabulary_Lists
 						Status.Text = ex.Message;
 					}
 				}
-				
+
 				return;
 			}
 
@@ -509,9 +510,9 @@ namespace Chinese_Vocabulary_Lists
 	                var chinChars = WorkTraditional.Text.ToCharArray();
 	                var uniHex = ExpandUnihex(chinChars);
 
-	                using (var ceDictionary = new CeDictDataContext(Properties.Settings.Default.ChineseStudyConnection))
+	                using (var ceDictionary = new DataSet1())
 	                {
-	                    var definitions = from ed in ceDictionary.CeDicts
+	                    var definitions = from ed in ceDictionary.CeDict
 	                                      where ed.Char == WorkTraditional.Text
 	                                      where ed.Bopo == textBopo.Text
 	                                      select ed;
@@ -525,9 +526,9 @@ namespace Chinese_Vocabulary_Lists
 
 	                WorkTraditional.Text = "";
 
-	                using (var uniHan = new CeDictDataContext(Properties.Settings.Default.ChineseStudyConnection))
+	                using (var uniHan = new DataSet1())
 	                {
-	                    var characters = from q in uniHan.UniHans
+	                    var characters = from q in uniHan.UniHan
 	                                     where q.cp == uniHex
 	                                     select q;
 
@@ -653,9 +654,9 @@ namespace Chinese_Vocabulary_Lists
 					var chinChars = WorkTraditional.Text.ToCharArray();
 					var uniHex = ExpandUnihex(chinChars);
 
-					using (var ceDictionary = new CeDictDataContext(Properties.Settings.Default.ChineseStudyConnection))
+					using (var ceDictionary = new DataSet1())
 					{
-						var definitions = from ed in ceDictionary.CeDicts 
+						var definitions = from ed in ceDictionary.CeDict 
 										  where ed.Char == WorkTraditional.Text
 										  where ed.Bopo == checkBoPo[0]
 										  select ed;
@@ -668,9 +669,9 @@ namespace Chinese_Vocabulary_Lists
 					}
 
 					WorkTraditional.Text = "";
-					using (var uniHan = new CeDictDataContext(Properties.Settings.Default.ChineseStudyConnection))
+					using (var uniHan = new DataSet1())
 					{
-						var characters = from q in uniHan.UniHans
+						var characters = from q in uniHan.UniHan
 										 where q.cp == uniHex
 										 select q;
 						try
@@ -957,7 +958,6 @@ namespace Chinese_Vocabulary_Lists
 
 		private void WorkTraditional_KeyDown(object sender, KeyEventArgs e)
         {
-            string Looker = " ";
         }
 	}
 

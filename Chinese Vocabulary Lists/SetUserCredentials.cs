@@ -40,13 +40,13 @@ namespace Chinese_Vocabulary_Lists
             Properties.Settings.Default.UserConnectionString =
                 "Data Source=" + Properties.Settings.Default.SqlServer +
                 ";Initial Catalog=" + Properties.Settings.Default.UserId +
-                ";Persist Security Info=True;User ID=" + Properties.Settings.Default.UserId +
+                ";Integrated Security=True;User ID=" + Properties.Settings.Default.UserId +
                 ";Password=" + Properties.Settings.Default.Password;
 
 			Properties.Settings.Default.ChineseStudyConnection =
 				 "Data Source=" + Properties.Settings.Default.SqlServer +
 				";Initial Catalog=ChineseStudy"  +
-				";Persist Security Info=True;User ID=" + Properties.Settings.Default.UserId +
+				";Integrated Security=True;User ID=" + Properties.Settings.Default.UserId +
 				";Password=" + Properties.Settings.Default.Password;
 
             Properties.Settings.Default.Save();
